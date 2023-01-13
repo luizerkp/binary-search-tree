@@ -1,0 +1,13 @@
+﻿{
+	"folders": [
+		{
+			"path": "../../repos/binary-search-tree/"
+		}
+  ],
+  "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"]
+  }
+}
