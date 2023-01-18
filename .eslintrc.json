@@ -28,6 +28,7 @@
         { 
           "props": false 
         }
-      ]
+      ],
+      "class-methods-use-this": ["error", { "exceptMethods": ["#findMinValue"] }] 
     }
 }
