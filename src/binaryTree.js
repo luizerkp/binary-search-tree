@@ -213,6 +213,65 @@ export class Tree {
     return postOrderNodeList.length > 0 ? postOrderNodeList : null;
   }
 
+  height(currentNode = this.root) {
+    if (currentNode === null) {
+      return -1;
+    }
+    const leftHeight = this.height(currentNode.leftNode);
+    const rightHeight = this.height(currentNode.rightNode);
+    return Math.max(leftHeight, rightHeight) + 1;
+  }
+
+  depth(node, currentNode = this.root, edges = 0) {
+    if (currentNode === null) {
+      return null;
+    }
+    if (currentNode.data === node.data) {
+      return edges;
+    }
+    if (node.data < currentNode.data) {
+      const newEdges = edges + 1;
+      return this.depth(node, currentNode.leftNode, newEdges);
+    }
+    if (node.data > currentNode.data) {
+      const newEdges = edges + 1;
+      return this.depth(node, currentNode.rightNode, newEdges);
+    }
+    return edges;
+  }
+
+  isBalanced() {
+    return this.#isBalancedHelper() > 0;
+  }
+
+  rebalance() {
+    const inOrderNodeList = this.inOrder();
+    this.root = this.buildTree(inOrderNodeList);
+    return this.root;
+  }
+
+  #isBalancedHelper(currentNode = this.root) {
+    if (currentNode === null) {
+      return 0;
+    }
+    const leftHeight = this.#isBalancedHelper(currentNode.leftNode);
+    const rightHeight = this.#isBalancedHelper(currentNode.rightNode);
+
+    if (leftHeight === -1) {
+      return -1;
+    }
+
+    if (rightHeight === -1) {
+      return -1;
+    }
+
+    if (Math.abs(leftHeight - rightHeight) > 1) {
+      return -1;
+    }
+
+    return Math.max(leftHeight, rightHeight) + 1;
+  }
+
   #findMinValue(node) {
     let min = node.data;
     let ptr = node;
