@@ -246,7 +246,7 @@ export class Tree {
 
   rebalance() {
     const inOrderNodeList = this.inOrder();
-    this.root = this.buildTree(inOrderNodeList);
+    this.root = buildTree(inOrderNodeList);
     return this.root;
   }
 
