@@ -7,7 +7,7 @@ import { createArrOfRandomInts, addRandomInts } from "./test.banaryTree";
 
 // buildPageContent
 (() => {
-  const arr = createArrOfRandomInts(25);
+  const arr = createArrOfRandomInts(20);
   console.log(arr);
   const newBST = new Tree(arr);
 
@@ -23,7 +23,7 @@ import { createArrOfRandomInts, addRandomInts } from "./test.banaryTree";
     }
   };
 
-  newBST.insertNode(2);
+  // newBST.insertNode(2);
   // newBST.insertNode(-3);
   // newBST.insertNode(-4);
   // newBST.deleteNode(4);
@@ -41,10 +41,10 @@ import { createArrOfRandomInts, addRandomInts } from "./test.banaryTree";
   console.log(newBST.isBalanced());
   const newBST200More = addRandomInts(newBST, 200);
   console.log(newBST200More);
-  prettyPrint(newBST200More.root);
-  console.log(newBST200More.isBalanced());
-  newBST200More.rebalance();
-  console.log(newBST200More.isBalanced());
-  prettyPrint(newBST200More.root);
+  // prettyPrint(newBST200More.root);
+  // console.log(newBST200More.isBalanced());
+  // newBST200More.rebalance();
+  // console.log(newBST200More.isBalanced());
+  // prettyPrint(newBST200More.root);
   footer.buildFooter();
 })();

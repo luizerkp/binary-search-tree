@@ -9,23 +9,53 @@
     <style>html{visibility: hidden;opacity:0;}</style>
   </head>
   <body>
-    <header class="header"></header>
-    <div id="main-container">  
-      <div class="tree">
-        <ul>
-          <li>
-            <div class="data">1</div>
-            <ul class="children">
-              <li class="left-child">
-                <div class="data">2</div>
-              </li>
-              <li class="right-child">
-                <div class="data">3</div>
-              </li>
-            </ul>
-          </li>
-        </ul>
+    <header class="header">        
+      <div class="header-top">
+        <h1>Binary Search Tree</h1>
       </div>
-    </div>
+      <div class="header-bottom">
+        <div class="header-left">      
+          <div class="tree-inputs">
+            <label for="random-array">Generate a Banary tree of random numbers</label>
+            <div class="input-and-btn">
+              <input type="number" name="random-array" id="random-array">
+              <button>Generate</button>              
+            </div>
+          </div>
+          <div class="tree-inputs">
+            <label for="insert-into">Insert a new number into tree <br> (duplicates ignored)</label>
+            <div class="input-and-btn">
+              <input type="number" name="insert-into" id="insert-into" >
+              <button>Insert</button>                
+            </div>
+          </div>        
+        </div>
+        <div class="header-middle">
+          <label for="rebalance">Rebalance tree</label>
+          <input type="button" name="rebalance" value="Rebalance" id="rebalance">
+        </div>
+        <div class="header-right">
+          <div class="tree-inputs">
+            <label for="remove-from">Romove a number from the tree</label>
+            <div class="input-and-btn">
+              <input type="number" name="remove-from" id="remove-from">
+              <button>Remove</button>              
+            </div>       
+          </div>
+          <div class="tree-inputs">
+            <label for="find-depth">Find depth of number in the tree</label>
+            <div class="input-and-btn">
+              <input type="number" name="find-depth" id="find-depth">
+              <button>Find</button>              
+            </div>
+          </div>        
+        </div>        
+      </div>
+    </header>
+    <div id="main-container">
+      <div class="tree"></div>
+      <div class="tree-info">
+        <p class="tree-info-title">Tree Info</p>
+      </div>
   </body>
 </html>
