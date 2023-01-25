@@ -1,14 +1,52 @@
-// const buildNodeDisplay = (node, root) => {
-//   if (node.data === root.data) {
-//     const rootDiv = document.querySelector(".root");
-//     rootDiv.textContent = node.root;
-//   }
+// expectst the root node as a param
+const printToPage = (node, prefix = "", isLeft = true) => {
+  // console.log(node);
+  if (node.rightNode !== null) {
+    printToPage(
+      node.rightNode,
+      `${prefix}${isLeft ? "│ \xa0\xa0\xa0\xa0\xa0\xa0\xa0" : "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0"}`,
+      false
+    );
+  }
+  const treeDiv = document.querySelector(".tree");
+  const div = document.createElement("div");
+  div.textContent = `${prefix}${isLeft ? "└── " : "┌── "}${node.data}`;
+  treeDiv.appendChild(div);
+  if (node.leftNode !== null) {
+    printToPage(
+      node.leftNode,
+      `${prefix}${isLeft ? "\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0\xa0" : "│ \xa0\xa0\xa0\xa0\xa0\xa0\xa0"}`,
+      true
+    );
+  }
+};
 
-//   // while (nodePtr !== null) {
-//   //   const ul = document.createElement("ul");
-//   //   ul.classList.add("children");
-//   //   const { leftChild, rightChild } = document.createElement("li");
-//   //   leftChild.classList.add("left-child");
-//   //   rightChild.classList.add("right-child");
-//   // }
-// };
+const consolePrettyPrint = (node, prefix = "", isLeft = true) => {
+  // console.log(node);
+  if (node.rightNode !== null) {
+    consolePrettyPrint(node.rightNode, `${prefix}${isLeft ? "│   " : "    "}`, false);
+  }
+  console.log(`${prefix}${isLeft ? "└── " : "┌── "}${node.data}`);
+  if (node.leftNode !== null) {
+    consolePrettyPrint(node.leftNode, `${prefix}${isLeft ? "    " : "│   "}`, true);
+  }
+};
+
+const displayBSTStats = (tree) => {
+  const treeInfoStats = document.querySelector(".tree-info-stats");
+  const balancedPara = document.createElement("p");
+  balancedPara.textContent = `Balanced: ${tree.isBalanced()}`;
+  treeInfoStats.appendChild(balancedPara);
+
+  const heightPara = document.createElement("p");
+  heightPara.textContent = `Height: ${tree.height()}`;
+  treeInfoStats.appendChild(heightPara);
+};
+
+const displayTraversals = (node) => {
+  const traversalText = document.querySelector(".traversal-text");
+  const nodeText = traversalText.textContent.length > 0 ? `,${node.data}` : `${node.data}`;
+  traversalText.append(nodeText);
+};
+
+export { printToPage, consolePrettyPrint, displayBSTStats, displayTraversals };

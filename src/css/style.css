@@ -56,6 +56,8 @@ button:hover, input#rebalance:hover {
 
 .tree {
   grid-column: 1/2;
+  font-weight: bold;
+  font-size: .9rem;
 }
 
 .tree-info {
@@ -70,12 +72,17 @@ button:hover, input#rebalance:hover {
   font-size: 1.2rem;
 }
 
-.inputs-and-btn input {
-  padding: 10px 0;
+.input-and-btn input {
+  width: 215px;
 }
 
 .input-and-btn button {
   width: 120px;
+}
+
+.traversal-text {
+  max-width: 1.5fr;
+  word-wrap: break-word;
 }
 
 /* Sticky Footer and credit */

@@ -16,9 +16,9 @@
       <div class="header-bottom">
         <div class="header-left">      
           <div class="tree-inputs">
-            <label for="random-array">Generate a Banary tree of random numbers</label>
+            <label for="random-array">Generate a Banary tree of random numbers<br> (max 200)</label>
             <div class="input-and-btn">
-              <input type="number" name="random-array" id="random-array">
+              <input type="number" name="random-array" id="random-array" min="0" max="200" value="25">
               <button>Generate</button>              
             </div>
           </div>
@@ -56,6 +56,16 @@
       <div class="tree"></div>
       <div class="tree-info">
         <p class="tree-info-title">Tree Info</p>
+        <div class="tree-info-stats"></div>
+        <div class="traversals">
+          <div class="traversal-btns">
+            <button class="traversal-btns" value="levelOrder">Level Order</button>
+            <button class="traversal-btns" value="inOrder">In Order</button>
+            <button class="traversal-btns" value="preOrder">Pre Order</button>
+            <button class="traversal-btns" value="postOrder">Post Order</button>
+          </div>
+          <p class="traversal-text"></p>
+        </div>
       </div>
   </body>
 </html>
