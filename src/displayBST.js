@@ -34,6 +34,7 @@ const consolePrettyPrint = (node, prefix = "", isLeft = true) => {
 
 const displayBSTStats = (tree) => {
   const treeInfoStats = document.querySelector(".tree-info-stats");
+
   const balancedPara = document.createElement("p");
   balancedPara.textContent = `Balanced: ${tree.isBalanced()}`;
   treeInfoStats.appendChild(balancedPara);
@@ -41,12 +42,17 @@ const displayBSTStats = (tree) => {
   const heightPara = document.createElement("p");
   heightPara.textContent = `Height: ${tree.height()}`;
   treeInfoStats.appendChild(heightPara);
+
+  const treeRootPara = document.createElement("p");
+  treeRootPara.textContent = `Tree Root: ${tree.root.data}`;
+  treeInfoStats.appendChild(treeRootPara);
 };
 
 const displayTraversals = (node) => {
   const traversalText = document.querySelector(".traversal-text");
-  const nodeText = traversalText.textContent.length > 0 ? `,${node.data}` : `${node.data}`;
-  traversalText.append(nodeText);
+  const currentString = traversalText.textContent;
+  const nodeText = traversalText.textContent.length > 0 ? `, ${node.data}` : `${node.data}`;
+  traversalText.textContent = currentString.concat(nodeText);
 };
 
 export { printToPage, consolePrettyPrint, displayBSTStats, displayTraversals };

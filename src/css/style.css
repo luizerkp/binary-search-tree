@@ -40,11 +40,17 @@ button:hover, input#rebalance:hover {
   gap: 15px;
 }
 
-.tree-inputs, .header-middle {
+.tree-inputs, .header-middle, .balance-btns {
   display: flex;
   flex-direction: column;
   gap: 4px;
   font-weight: bold;
+  justify-content: center;
+}
+
+.balance-btns-div {
+  justify-content: center;
+  margin: .5rem;
 }
 
 #main-container {
@@ -65,8 +71,17 @@ button:hover, input#rebalance:hover {
   border: 2px white solid;
   border-radius: 10px;
   text-align: center;
+  width: 400px;
+  max-height: 600px;
+  padding: 25px;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+  overflow-y: auto;
 }
 
+.tree-info-top {
+  border-bottom: 2px solid white;
+}
 .tree-info-title {
   font-weight: bold;
   font-size: 1.2rem;
@@ -80,9 +95,13 @@ button:hover, input#rebalance:hover {
   width: 120px;
 }
 
+.traversals {
+  padding-top: 25px;
+}
+
 .traversal-text {
-  max-width: 1.5fr;
-  word-wrap: break-word;
+  text-align: justify;
+  overflow-wrap: break-word;
 }
 
 /* Sticky Footer and credit */
