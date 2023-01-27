@@ -82,9 +82,17 @@ button:hover, input#rebalance:hover {
 .tree-info-top {
   border-bottom: 2px solid white;
 }
+
 .tree-info-title {
   font-weight: bold;
   font-size: 1.2rem;
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+  text-decoration-thickness: 3px;
+}
+
+.tree-info-stats > p {
+  margin-bottom: 0;
 }
 
 .input-and-btn input {

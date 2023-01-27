@@ -27,7 +27,7 @@
           <div class="tree-inputs">
             <label for="insert-into">Insert a new number into tree <br> (duplicates ignored)</label>
             <div class="input-and-btn">
-              <input type="number" name="insert-into" id="insert-into"
+              <input type="number" name="insert-into" id="insert-into" step="any"
               oninput="setCustomValidity('')">
               <button class="tree-function-btns" value="insert">Insert</button>                
             </div>
@@ -45,9 +45,9 @@
         </div>
         <div class="header-right">
           <div class="tree-inputs">
-            <label for="remove-from">Romove a number from the tree</label>
+            <label for="remove-from">Romove a number from the tree <br>(ignores numbers not on tree)</label>
             <div class="input-and-btn">
-              <input type="number" name="remove-from" id="remove-from"
+              <input type="number" name="remove-from" id="remove-from" step="any"
               oninput="setCustomValidity('')">
               <button class="tree-function-btns" value="remove">Remove</button>              
             </div>       
@@ -55,9 +55,9 @@
           <div class="tree-inputs">
             <label for="find-depth">Find depth of number in the tree</label>
             <div class="input-and-btn">
-              <input type="number" name="find-depth" id="find-depth"
+              <input type="number" name="find-depth" id="find-depth" step="any"
               oninput="setCustomValidity('')">
-              <button class="tree-function-btns" value="find">Find</button>              
+              <button class="tree-function-btns" value="depth">Find</button>              
             </div>
           </div>        
         </div>        
@@ -68,7 +68,12 @@
       <div class="tree-info">
         <div class="tree-info-top">
           <p class="tree-info-title">Tree Info</p>
-          <div class="tree-info-stats"></div>          
+          <div class="tree-info-stats">
+            <p class="balanced"></p>
+            <p class="tree-height"></p>
+            <p class="tree-root"></p>
+            <p class="node-depth"></p>
+          </div>          
         </div>
         <div class="traversals">
           <div class="traversal-btns">

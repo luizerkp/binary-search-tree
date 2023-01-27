@@ -1,6 +1,5 @@
-// expectst the root node as a param
+// expects the root node as a param
 const printToPage = (node, prefix = "", isLeft = true) => {
-  // console.log(node);
   if (node.rightNode !== null) {
     printToPage(
       node.rightNode,
@@ -22,7 +21,6 @@ const printToPage = (node, prefix = "", isLeft = true) => {
 };
 
 const consolePrettyPrint = (node, prefix = "", isLeft = true) => {
-  // console.log(node);
   if (node.rightNode !== null) {
     consolePrettyPrint(node.rightNode, `${prefix}${isLeft ? "│   " : "    "}`, false);
   }
@@ -33,19 +31,14 @@ const consolePrettyPrint = (node, prefix = "", isLeft = true) => {
 };
 
 const displayBSTStats = (tree) => {
-  const treeInfoStats = document.querySelector(".tree-info-stats");
-
-  const balancedPara = document.createElement("p");
+  const balancedPara = document.querySelector(".balanced");
   balancedPara.textContent = `Balanced: ${tree.isBalanced()}`;
-  treeInfoStats.appendChild(balancedPara);
 
-  const heightPara = document.createElement("p");
+  const heightPara = document.querySelector(".tree-height");
   heightPara.textContent = `Height: ${tree.height()}`;
-  treeInfoStats.appendChild(heightPara);
 
-  const treeRootPara = document.createElement("p");
+  const treeRootPara = document.querySelector(".tree-root");
   treeRootPara.textContent = `Tree Root: ${tree.root.data}`;
-  treeInfoStats.appendChild(treeRootPara);
 };
 
 const displayTraversals = (node) => {

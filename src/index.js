@@ -23,14 +23,18 @@ const BSTDisplay = (() => {
 
   const clearTreeInfo = () => {
     const treeDiv = document.querySelector(".tree");
-    const treeInfoStats = document.querySelector(".tree-info-stats");
+    const balanced = document.querySelector(".balanced");
+    const treeHeght = document.querySelector(".tree-height");
+    const treeRoot = document.querySelector(".tree-root");
+    const nodeDepth = document.querySelector(".node-depth");
 
     if (treeDiv.hasChildNodes()) {
       treeDiv.replaceChildren();
     }
-    if (treeInfoStats.hasChildNodes()) {
-      treeInfoStats.replaceChildren();
-    }
+    balanced.textContent = "";
+    treeHeght.textContent = "";
+    treeRoot.textContent = "";
+    nodeDepth.textContent = "";
   };
 
   const clearTraversalText = () => {
@@ -57,14 +61,27 @@ const BSTDisplay = (() => {
   };
 
   const rebalanceCurrentBST = () => {
+    if (!BST) {
+      alert("No tree found, generating new balanced tree");
+      const arr = createArrOfRandomInts(50);
+      BST = new Tree(arr);
+    }
+
     if (!BST.isBalanced()) {
       BST.rebalance();
-      displayBSTInfo();
     }
+
+    displayBSTInfo();
   };
 
   const unbalanceCurrentBST = () => {
-    if (checkBSTTooLarge) {
+    if (!BST) {
+      alert("No tree found, generating new unbalanced tree");
+      const arr = createArrOfRandomInts(50);
+      BST = new Tree(arr);
+    }
+
+    if (checkBSTTooLarge()) {
       const randomArrayInputField = document.querySelector("#random-array");
       randomArrayInputField.value = 100;
       alert("Binary Tree is too large to display generated a new max size(100) array to unbanlance");
@@ -89,6 +106,67 @@ const BSTDisplay = (() => {
     return displayBSTInfo();
   };
 
+  const insertIntoTree = (input) => {
+    if (!input.validity.valid) {
+      return checkInputValidity(input);
+    }
+
+    if (!BST) {
+      return alert("Please generate a new tree before inserting into it");
+    }
+
+    if (checkBSTTooLarge()) {
+      return alert("Binary Tree has reached max displayable size(225). Please try again with a smaller tree");
+    }
+
+    BST.insertNode(Number(input.value));
+
+    // reset input field
+    const insertIntoInputField = document.querySelector("#insert-into");
+    insertIntoInputField.value = "";
+
+    return displayBSTInfo();
+  };
+
+  const removeFromTree = (input) => {
+    if (!input.validity.valid) {
+      return checkInputValidity(input);
+    }
+
+    if (!BST) {
+      return alert("No tree found to remove from, please genrate a new tree before trying again");
+    }
+
+    if (checkBSTTooLarge()) {
+      return alert("Binary Tree has reached max displayable size(225). Please try again with a smaller tree");
+    }
+
+    BST.deleteNode(Number(input.value));
+
+    // reset input field
+    const deleteFromInputField = document.querySelector("#remove-from");
+    deleteFromInputField.value = "";
+
+    return displayBSTInfo();
+  };
+
+  const findNodeDepth = (input) => {
+    if (!input.validity.valid) {
+      return checkInputValidity(input);
+    }
+
+    if (!BST) {
+      return alert("No tree found, please genrate a new tree before trying again");
+    }
+    const nodeDepthPara = document.querySelector(".node-depth");
+    const depth = BST.depth(Number(input.value));
+
+    const depthText = `Node ${input.value} Depth: ${depth}`;
+    const notFound = `Node ${input.value} Depth: Not Found`;
+    nodeDepthPara.textContent = depth !== null ? depthText : notFound;
+    return nodeDepthPara;
+  };
+
   const getBST = () => BST;
 
   return {
@@ -98,6 +176,9 @@ const BSTDisplay = (() => {
     rebalanceCurrentBST,
     generateNewTree,
     unbalanceCurrentBST,
+    insertIntoTree,
+    removeFromTree,
+    findNodeDepth,
   };
 })();
 
@@ -127,7 +208,7 @@ const eventListeners = (() => {
       generate: document.querySelector("#random-array"),
       insert: document.querySelector("#insert-into"),
       remove: document.querySelector("#remove-from"),
-      find: document.querySelector("#find-depth"),
+      depth: document.querySelector("#find-depth"),
     };
 
     treeFunctionBtns.forEach((btn) => {
@@ -135,6 +216,15 @@ const eventListeners = (() => {
         switch (e.target.value) {
           case "generate":
             BSTDisplay.generateNewTree(treeFunctionteInputValues.generate);
+            break;
+          case "insert":
+            BSTDisplay.insertIntoTree(treeFunctionteInputValues.insert);
+            break;
+          case "remove":
+            BSTDisplay.removeFromTree(treeFunctionteInputValues.remove);
+            break;
+          case "depth":
+            BSTDisplay.findNodeDepth(treeFunctionteInputValues.depth);
             break;
           default:
             break;

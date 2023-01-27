@@ -222,20 +222,20 @@ export class Tree {
     return Math.max(leftHeight, rightHeight) + 1;
   }
 
-  depth(node, currentNode = this.root, edges = 0) {
+  depth(value, currentNode = this.root, edges = 0) {
     if (currentNode === null) {
       return null;
     }
-    if (currentNode.data === node.data) {
+    if (currentNode.data === value) {
       return edges;
     }
-    if (node.data < currentNode.data) {
+    if (value < currentNode.data) {
       const newEdges = edges + 1;
-      return this.depth(node, currentNode.leftNode, newEdges);
+      return this.depth(value, currentNode.leftNode, newEdges);
     }
-    if (node.data > currentNode.data) {
+    if (value > currentNode.data) {
       const newEdges = edges + 1;
-      return this.depth(node, currentNode.rightNode, newEdges);
+      return this.depth(value, currentNode.rightNode, newEdges);
     }
     return edges;
   }
