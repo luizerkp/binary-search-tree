@@ -21,6 +21,13 @@ const BSTDisplay = (() => {
     input.reportValidity();
   };
 
+  const clearTravesalBtnSelection = () => {
+    const currentSelected = document.querySelector(".selected");
+    if (currentSelected) {
+      currentSelected.classList.remove("selected");
+    }
+  };
+
   const clearTreeInfo = () => {
     const treeDiv = document.querySelector(".tree");
     const balanced = document.querySelector(".balanced");
@@ -49,6 +56,7 @@ const BSTDisplay = (() => {
   const displayBSTInfo = () => {
     clearTraversalText();
     clearTreeInfo();
+    clearTravesalBtnSelection();
     consolePrettyPrint(BST.root);
     displayBSTStats(BST);
     printToPage(BST.root);
@@ -179,6 +187,7 @@ const BSTDisplay = (() => {
     insertIntoTree,
     removeFromTree,
     findNodeDepth,
+    clearTravesalBtnSelection,
   };
 })();
 
@@ -240,7 +249,10 @@ const eventListeners = (() => {
       btn.addEventListener("click", (e) => {
         const currentBST = BSTDisplay.getBST();
 
+        BSTDisplay.clearTravesalBtnSelection();
         BSTDisplay.clearTraversalText();
+
+        btn.classList.add("selected");
 
         switch (e.target.value) {
           case "levelOrder":
